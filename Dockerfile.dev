@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+# 종속성 관련 부분만 별도 처리하여 npm i 를 필요할 때만 실행
+COPY package.json ./
+
+RUN npm install
+
+COPY ./ ./
+#copy 현재폴더 도커폴더
+
+CMD ["npm", "run","start"]
